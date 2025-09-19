@@ -59,8 +59,56 @@ namespace sistemaRegistro
 
         private void btnAcceder_Click_1(object sender, EventArgs e)
         {
+            
+            {
+                string user = txtUsuario.Text;
+                string pass = txtPass.Text;
+
+                if (AutenticarUsuario(user, pass))
+                {
+                    MessageBox.Show("Inicio de sesión correcto");
+                    // Abrir formulario principal, etc.
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos");
+                }
+            }
+
+        }
+
+        private void btnSaltar_Click(object sender, EventArgs e)
+        {
             GestionarUsuarios gestionarUsuarios = new GestionarUsuarios();
             gestionarUsuarios.ShowDialog();
+        }
+       
+        private bool AutenticarUsuario(string nombreUsuario, string passwordIngresada)
+        {
+            string hashBD = null;
+
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+                string sql = "SELECT pass FROM tbUsuario WHERE nombreUsuario = @Nombre";
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.Parameters.AddWithValue("@Nombre", nombreUsuario);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        hashBD = result.ToString();
+                    }
+                    else
+                    {
+                        // Usuario no encontrado
+                        return false;
+                    }
+                }
+            }
+
+            // Verificar la contraseña ingresada contra el hash guardado
+            bool esCorrecta = BCrypt.Net.BCrypt.Verify(passwordIngresada, hashBD);
+            return esCorrecta;
         }
     }
 }
