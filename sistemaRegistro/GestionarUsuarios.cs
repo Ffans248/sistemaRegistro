@@ -100,5 +100,24 @@ namespace sistemaRegistro
         {
 
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvUsuarios.Rows[e.RowIndex];
+
+                txtId.Text = fila.Cells["idUsuario"].Value.ToString();
+                txtNombre.Text = fila.Cells["nombreUsuario"].Value.ToString();
+                txtCorreo.Text = fila.Cells["correo"].Value.ToString();
+                cmbRol.SelectedItem = fila.Cells["rol"].Value.ToString();
+                cmbEstado.SelectedValue = Convert.ToInt32(fila.Cells["estado"].Value);
+            }
+        }
     }
 }
