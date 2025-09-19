@@ -67,7 +67,10 @@ namespace sistemaRegistro
                 if (AutenticarUsuario(user, pass))
                 {
                     MessageBox.Show("Inicio de sesión correcto");
-                    // Abrir formulario principal, etc.
+                    Menu menu = new Menu();
+                    this.Hide();
+                    menu.ShowDialog();
+                    
                 }
                 else
                 {

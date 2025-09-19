@@ -28,33 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPermisos = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.chbLeer = new System.Windows.Forms.CheckBox();
+            this.chbEliminar = new System.Windows.Forms.CheckBox();
+            this.chbEditar = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPermisos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(60, 254);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(672, 251);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvPermisos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPermisos.Location = new System.Drawing.Point(60, 254);
+            this.dgvPermisos.Name = "dgvPermisos";
+            this.dgvPermisos.RowHeadersWidth = 51;
+            this.dgvPermisos.RowTemplate.Height = 24;
+            this.dgvPermisos.Size = new System.Drawing.Size(672, 251);
+            this.dgvPermisos.TabIndex = 0;
+            this.dgvPermisos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPermisos_CellClick);
             // 
             // label3
             // 
@@ -93,59 +94,59 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "ID:";
             // 
-            // textBox3
+            // txtCorreo
             // 
-            this.textBox3.Location = new System.Drawing.Point(105, 148);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 11;
+            this.txtCorreo.Location = new System.Drawing.Point(166, 148);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.ReadOnly = true;
+            this.txtCorreo.Size = new System.Drawing.Size(100, 22);
+            this.txtCorreo.TabIndex = 11;
             // 
-            // textBox2
+            // txtNombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(105, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 10;
+            this.txtNombre.Location = new System.Drawing.Point(166, 107);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ReadOnly = true;
+            this.txtNombre.Size = new System.Drawing.Size(100, 22);
+            this.txtNombre.TabIndex = 10;
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Location = new System.Drawing.Point(105, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 9;
+            this.txtId.Location = new System.Drawing.Point(166, 68);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(100, 22);
+            this.txtId.TabIndex = 9;
             // 
-            // checkBox1
+            // chbLeer
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(228, 217);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(56, 20);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.Text = "Leer";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chbLeer.AutoSize = true;
+            this.chbLeer.Location = new System.Drawing.Point(245, 217);
+            this.chbLeer.Name = "chbLeer";
+            this.chbLeer.Size = new System.Drawing.Size(56, 20);
+            this.chbLeer.TabIndex = 15;
+            this.chbLeer.Text = "Leer";
+            this.chbLeer.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chbEliminar
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(290, 217);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(77, 20);
-            this.checkBox2.TabIndex = 16;
-            this.checkBox2.Text = "Eliminar";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chbEliminar.AutoSize = true;
+            this.chbEliminar.Location = new System.Drawing.Point(317, 217);
+            this.chbEliminar.Name = "chbEliminar";
+            this.chbEliminar.Size = new System.Drawing.Size(77, 20);
+            this.chbEliminar.TabIndex = 16;
+            this.chbEliminar.Text = "Eliminar";
+            this.chbEliminar.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // chbEditar
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(373, 217);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(64, 20);
-            this.checkBox3.TabIndex = 17;
-            this.checkBox3.Text = "Editar";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chbEditar.AutoSize = true;
+            this.chbEditar.Location = new System.Drawing.Point(423, 217);
+            this.chbEditar.Name = "chbEditar";
+            this.chbEditar.Size = new System.Drawing.Size(64, 20);
+            this.chbEditar.TabIndex = 17;
+            this.chbEditar.Text = "Editar";
+            this.chbEditar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -156,13 +157,13 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Rol:";
             // 
-            // comboBox1
+            // cmbRol
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(105, 185);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 18;
+            this.cmbRol.FormattingEnabled = true;
+            this.cmbRol.Location = new System.Drawing.Point(166, 185);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(121, 24);
+            this.cmbRol.TabIndex = 18;
             // 
             // label6
             // 
@@ -198,21 +199,21 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.checkBox3);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cmbRol);
+            this.Controls.Add(this.chbEditar);
+            this.Controls.Add(this.chbEliminar);
+            this.Controls.Add(this.chbLeer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPermisos);
             this.Name = "GestionarPermisos";
             this.Text = "GestionarPermisos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,19 +221,19 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPermisos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.CheckBox chbLeer;
+        private System.Windows.Forms.CheckBox chbEliminar;
+        private System.Windows.Forms.CheckBox chbEditar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbRol;
         private System.Windows.Forms.Label label6;
         private FontAwesome.Sharp.IconButton btnGuardar;
     }
