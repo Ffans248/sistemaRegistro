@@ -132,6 +132,7 @@
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAcceder.UseVisualStyleBackColor = true;
+            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click_1);
             // 
             // Login
             // 

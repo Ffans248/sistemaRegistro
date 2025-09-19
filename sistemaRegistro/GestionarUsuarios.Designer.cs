@@ -49,8 +49,9 @@
             // dgvUsuarios
             // 
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.Location = new System.Drawing.Point(14, 263);
+            this.dgvUsuarios.Location = new System.Drawing.Point(12, 286);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersWidth = 51;
             this.dgvUsuarios.RowTemplate.Height = 24;
             this.dgvUsuarios.Size = new System.Drawing.Size(872, 254);
@@ -58,37 +59,38 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(93, 36);
+            this.txtId.Location = new System.Drawing.Point(118, 37);
             this.txtId.Name = "txtId";
             this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(33, 22);
+            this.txtId.Size = new System.Drawing.Size(36, 22);
             this.txtId.TabIndex = 1;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(93, 75);
+            this.txtNombre.Location = new System.Drawing.Point(118, 70);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(121, 22);
             this.txtNombre.TabIndex = 2;
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(93, 116);
+            this.txtCorreo.Location = new System.Drawing.Point(118, 111);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(121, 22);
             this.txtCorreo.TabIndex = 3;
             // 
             // cmbRol
             // 
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(93, 188);
+            this.cmbRol.Location = new System.Drawing.Point(118, 186);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(121, 24);
             this.cmbRol.TabIndex = 4;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(93, 155);
+            this.txtPass.Location = new System.Drawing.Point(118, 153);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(121, 22);
             this.txtPass.TabIndex = 5;
@@ -97,16 +99,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 42);
+            this.label1.Location = new System.Drawing.Point(58, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "ID:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 75);
+            this.label2.Location = new System.Drawing.Point(22, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 7;
@@ -115,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 116);
+            this.label3.Location = new System.Drawing.Point(30, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 8;
@@ -124,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 158);
+            this.label4.Location = new System.Drawing.Point(2, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 16);
             this.label4.TabIndex = 9;
@@ -133,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(56, 191);
+            this.label5.Location = new System.Drawing.Point(50, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 16);
             this.label5.TabIndex = 10;
@@ -142,7 +145,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 225);
+            this.label6.Location = new System.Drawing.Point(28, 223);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 16);
             this.label6.TabIndex = 12;
@@ -150,11 +153,12 @@
             // 
             // cmbEstado
             // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(93, 223);
+            this.cmbEstado.Location = new System.Drawing.Point(118, 220);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 24);
             this.cmbEstado.TabIndex = 11;
@@ -163,7 +167,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(296, 9);
+            this.label7.Location = new System.Drawing.Point(296, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(282, 41);
             this.label7.TabIndex = 13;
@@ -178,9 +182,9 @@
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 20;
-            this.btnGuardar.Location = new System.Drawing.Point(257, 191);
+            this.btnGuardar.Location = new System.Drawing.Point(299, 189);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(120, 56);
+            this.btnGuardar.Size = new System.Drawing.Size(123, 60);
             this.btnGuardar.TabIndex = 22;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;

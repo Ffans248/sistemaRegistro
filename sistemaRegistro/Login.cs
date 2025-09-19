@@ -56,5 +56,11 @@ namespace sistemaRegistro
         {
 
         }
+
+        private void btnAcceder_Click_1(object sender, EventArgs e)
+        {
+            GestionarUsuarios gestionarUsuarios = new GestionarUsuarios();
+            gestionarUsuarios.ShowDialog();
+        }
     }
 }

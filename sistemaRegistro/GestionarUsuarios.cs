@@ -18,6 +18,8 @@ namespace sistemaRegistro
         public GestionarUsuarios()
         {
             InitializeComponent();
+            cargarUsuario();
+            cargarCombos();
         }
         private void cargarUsuario()
         {
@@ -30,6 +32,22 @@ namespace sistemaRegistro
             }
         }
 
+        private void cargarCombos()
+        {
+            cmbRol.Items.Add("Admin");
+            cmbRol.Items.Add("User");
+
+            var estados = new[]
+            {
+            new { Text = "Activo",   Value = 1 },
+            new { Text = "Inactivo", Value = 0 }
+            };
+
+            cmbEstado.DataSource = estados;
+            cmbEstado.DisplayMember = "Text";
+            cmbEstado.ValueMember = "Value";
+        }
+
 
         private void GestionarUsuarios_Load(object sender, EventArgs e)
         {
@@ -40,15 +58,22 @@ namespace sistemaRegistro
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO tbUsuario (Nombre) VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado)", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO tbUsuario (nombreUsuario, correo, pass, rol, estado) VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado)", con);
                 cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
                 cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-                cmd.Parameters.AddWithValue("@Pass", txtPass.Text);
+                cmd.Parameters.AddWithValue("@Pass", BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
                 cmd.Parameters.AddWithValue("@Rol", cmbRol.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@Estado", cmbEstado.SelectedItem.ToString());
+                var estado = ((dynamic)cmbEstado.SelectedItem).Value;
+                cmd.Parameters.AddWithValue("@Estado", cmbEstado.SelectedValue);
+
                 cmd.ExecuteNonQuery();
             }
             cargarUsuario();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
