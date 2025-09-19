@@ -59,26 +59,40 @@ namespace sistemaRegistro
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO tbUsuario (nombreUsuario, correo, pass, rol, estado) VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado)", con);
-                cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-                cmd.Parameters.AddWithValue("@Pass", BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
-                cmd.Parameters.AddWithValue("@Rol", cmbRol.SelectedItem.ToString());
-                var nombre = txtNombre.Text;
-                var correo = txtCorreo.Text;
-                var estado = ((dynamic)cmbEstado.SelectedItem).Value;
-                cmd.Parameters.AddWithValue("@Estado", cmbEstado.SelectedValue);
-                string query = "SELECT nombreUsuario, correo FROM tbUsuario WHERE nombreUsuario = " + nombre + " OR correo = " + correo; 
-                SqlCommand command = new SqlCommand(query, con);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                
+                string checkSql = @"SELECT 1 FROM tbUsuario
+                            WHERE nombreUsuario = @Nombre OR correo = @Correo";
+                using (SqlCommand checkCmd = new SqlCommand(checkSql, con))
                 {
-                    MessageBox.Show("El nombre de usuario o correo ya existe.");
-                    return;
+                    checkCmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                    checkCmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+
+                    object existe = checkCmd.ExecuteScalar();
+                    if (existe != null)
+                    {
+                        MessageBox.Show("El nombre de usuario o correo ya existe.");
+                        return;
+                    }
                 }
 
-                cmd.ExecuteNonQuery();
+                string insertSql = @"INSERT INTO tbUsuario
+                             (nombreUsuario, correo, pass, rol, estado)
+                             VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado)";
+                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                    insertCmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+                    insertCmd.Parameters.AddWithValue("@Pass",
+                        BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
+                    insertCmd.Parameters.AddWithValue("@Rol",
+                        cmbRol.SelectedItem.ToString());
+                    insertCmd.Parameters.AddWithValue("@Estado",
+                        cmbEstado.SelectedValue);
+
+                    insertCmd.ExecuteNonQuery();
+                }
             }
+
             cargarUsuario();
         }
 
