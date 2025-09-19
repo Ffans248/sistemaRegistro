@@ -51,12 +51,27 @@ namespace sistemaRegistro
 
 
                 }
+                using (SqlConnection con = new Conexion().AbrirConexion())
+                {
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tbUsuario", con);
+                }
+                
+
+                if (fila.Cells[""])
+                {
+
+                }
             }
         }
         private void rolesCmb()
         {
             cmbRol.Items.Add("Admin");
             cmbRol.Items.Add("User");
+
+        }
+
+        private void GestionarPermisos_Load(object sender, EventArgs e)
+        {
 
         }
     }

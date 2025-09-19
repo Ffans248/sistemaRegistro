@@ -213,6 +213,7 @@
             this.Controls.Add(this.dgvPermisos);
             this.Name = "GestionarPermisos";
             this.Text = "GestionarPermisos";
+            this.Load += new System.EventHandler(this.GestionarPermisos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
