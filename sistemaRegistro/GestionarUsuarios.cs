@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -63,8 +64,18 @@ namespace sistemaRegistro
                 cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
                 cmd.Parameters.AddWithValue("@Pass", BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
                 cmd.Parameters.AddWithValue("@Rol", cmbRol.SelectedItem.ToString());
+                var nombre = txtNombre.Text;
+                var correo = txtCorreo.Text;
                 var estado = ((dynamic)cmbEstado.SelectedItem).Value;
                 cmd.Parameters.AddWithValue("@Estado", cmbEstado.SelectedValue);
+                string query = "SELECT nombreUsuario, correo FROM tbUsuario WHERE nombreUsuario = " + nombre + " OR correo = " + correo; 
+                SqlCommand command = new SqlCommand(query, con);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    MessageBox.Show("El nombre de usuario o correo ya existe.");
+                    return;
+                }
 
                 cmd.ExecuteNonQuery();
             }

@@ -42,14 +42,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(292, 138);
+            this.textBox1.Location = new System.Drawing.Point(313, 136);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(201, 22);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(292, 184);
+            this.textBox2.Location = new System.Drawing.Point(313, 182);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(201, 22);
             this.textBox2.TabIndex = 1;
@@ -85,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(156, 309);
+            this.label4.Location = new System.Drawing.Point(153, 325);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(161, 16);
             this.label4.TabIndex = 6;
@@ -94,7 +94,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(439, 309);
+            this.label5.Location = new System.Drawing.Point(436, 325);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 16);
             this.label5.TabIndex = 7;
@@ -103,18 +103,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(146, 328);
+            this.button1.Location = new System.Drawing.Point(143, 356);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 23);
+            this.button1.Size = new System.Drawing.Size(189, 36);
             this.button1.TabIndex = 8;
             this.button1.Text = "Recuperar Contraseña";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(442, 328);
+            this.button2.Location = new System.Drawing.Point(439, 356);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 23);
+            this.button2.Size = new System.Drawing.Size(180, 36);
             this.button2.TabIndex = 9;
             this.button2.Text = "Crear un cuenta";
             this.button2.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             this.btnAcceder.IconColor = System.Drawing.Color.Black;
             this.btnAcceder.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAcceder.IconSize = 20;
-            this.btnAcceder.Location = new System.Drawing.Point(295, 224);
+            this.btnAcceder.Location = new System.Drawing.Point(316, 230);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Size = new System.Drawing.Size(177, 66);
             this.btnAcceder.TabIndex = 10;
