@@ -57,10 +57,6 @@ namespace sistemaRegistro
                 }
                 
 
-                if (fila.Cells[""])
-                {
-
-                }
             }
         }
         private void rolesCmb()
