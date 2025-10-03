@@ -16,23 +16,23 @@ namespace sistemaRegistro
     public partial class Login : Form
     {
         
-    public class Conexion
-    {
-        private SqlConnection con;
-        public SqlConnection AbrirConexion()
+        public class Conexion
         {
-            con = new
-            SqlConnection(ConfigurationManager.ConnectionStrings["ConexionDB"].ConnectionString);
-            if (con.State == System.Data.ConnectionState.Closed)
-                con.Open();
-            return con;
+            private SqlConnection con;
+            public SqlConnection AbrirConexion()
+            {
+                con = new
+                SqlConnection(ConfigurationManager.ConnectionStrings["ConexionDB"].ConnectionString);
+                if (con.State == System.Data.ConnectionState.Closed)
+                    con.Open();
+                return con;
+            }
+            public void CerrarConexion()
+            {
+                if (con != null && con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
         }
-        public void CerrarConexion()
-        {
-            if (con != null && con.State == System.Data.ConnectionState.Open)
-                con.Close();
-        }
-}
 
         public Login()
         {
@@ -112,6 +112,18 @@ namespace sistemaRegistro
             // Verificar la contraseña ingresada contra el hash guardado
             bool esCorrecta = BCrypt.Net.BCrypt.Verify(passwordIngresada, hashBD);
             return esCorrecta;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            crearUsuario crearUsuario = new crearUsuario();
+            crearUsuario.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            recuperar recuperar = new recuperar();
+            recuperar.ShowDialog();
         }
     }
 }

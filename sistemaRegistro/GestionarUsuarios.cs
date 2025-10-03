@@ -26,7 +26,8 @@ namespace sistemaRegistro
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tbUsuario", con);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT idUsuario, " +
+                    "nombreUsuario, correo, rol, estado FROM tbUsuario", con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvUsuarios.DataSource = dt;
@@ -103,7 +104,23 @@ namespace sistemaRegistro
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+                string query = "UPDATE tbUsuario SET nombreUsuario = @Nombre, correo = @Correo, pass = @Pass," +
+                    " rol = @Rol, estado = @Estado WHERE idUsuario = @Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+                cmd.Parameters.AddWithValue("@Pass", txtPass.Text);
+                cmd.Parameters.AddWithValue("@Rol",
+                cmbRol.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@Estado",
+                cmbEstado.SelectedValue);
+                cmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                cmd.Parameters.AddWithValue("@Id", txtId.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Usuario actualizado correctamente");
+            }
+            cargarUsuario();
         }
        
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -118,6 +135,19 @@ namespace sistemaRegistro
                 cmbRol.SelectedItem = fila.Cells["rol"].Value.ToString();
                 cmbEstado.SelectedValue = Convert.ToInt32(fila.Cells["estado"].Value);
             }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+                string query = "DELETE FROM tbUsuario WHERE idUsuario = @Id";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Id", txtId.Text);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Usuario Eliminado Correctamente");
+            }
+            cargarUsuario();
         }
     }
 }
