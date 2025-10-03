@@ -53,11 +53,49 @@ namespace sistemaRegistro
                 }
                 using (SqlConnection con = new Conexion().AbrirConexion())
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT lectura FROM tbPermisoFormulario where idUsuario=@idUsuario", con);
-                    .Parameters.addWithValue("@idUsuario")
-                }
-                
+                    //obtener id
+                    int id = int.Parse(txtId.Text);
+                    //obteniendo el valor de lectura
+                    SqlCommand cmd = new SqlCommand("SELECT lectura FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                    cmd.Parameters.AddWithValue("@idUsuario", id);
+                    object resultLectura = cmd.ExecuteScalar();
+                    //obteniendo el valor de Escritura
+                    SqlCommand cmd2 = new SqlCommand("SELECT escritura FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                    cmd2.Parameters.AddWithValue("@idUsuario", id);
+                    object resultEscritura = cmd2.ExecuteScalar();
+                    //obteniendo el valor de eliminacion
+                    SqlCommand cmd3 = new SqlCommand("SELECT eliminacion FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                    cmd3.Parameters.AddWithValue("@idUsuario", id);
+                    object resultEliminacion = cmd3.ExecuteScalar();
 
+                    if (resultLectura != null && resultLectura != DBNull.Value)
+                    {
+                        bool lectura = Convert.ToBoolean(resultLectura);
+                        //marcando el checkbox
+                        chbLeer.Checked = lectura;
+                        chbEditar.Checked = false;
+                        chbEliminar.Checked = false;
+                    }
+                    else if (resultEscritura != null && resultEscritura != DBNull.Value)
+                    {
+                        bool escritura = Convert.ToBoolean(resultEscritura);
+                        //marcando el checkbox
+                        chbLeer.Checked = false;
+                        chbEditar.Checked = escritura;
+                        chbEliminar.Checked = false;
+
+                    }
+                    else if (resultEliminacion != null && resultEliminacion != DBNull.Value)
+                    {
+
+                        bool eliminacion = Convert.ToBoolean(resultEliminacion);
+                        //marcando el checkbox
+                        chbLeer.Checked = false;
+                        chbEditar.Checked = false;
+                        chbEliminar.Checked = eliminacion;
+
+                    }
+                    }
             }
         }
         private void rolesCmb()
