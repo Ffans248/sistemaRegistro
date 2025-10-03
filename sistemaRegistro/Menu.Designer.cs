@@ -31,6 +31,7 @@
             this.btnGestionarUsuarios = new FontAwesome.Sharp.IconButton();
             this.btnGestionarPermisos = new FontAwesome.Sharp.IconButton();
             this.btnchangePass = new FontAwesome.Sharp.IconButton();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnGestionarUsuarios
@@ -41,7 +42,7 @@
             this.btnGestionarUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
             this.btnGestionarUsuarios.IconColor = System.Drawing.Color.Black;
             this.btnGestionarUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarUsuarios.Location = new System.Drawing.Point(55, 37);
+            this.btnGestionarUsuarios.Location = new System.Drawing.Point(54, 63);
             this.btnGestionarUsuarios.Name = "btnGestionarUsuarios";
             this.btnGestionarUsuarios.Size = new System.Drawing.Size(256, 132);
             this.btnGestionarUsuarios.TabIndex = 3;
@@ -58,7 +59,7 @@
             this.btnGestionarPermisos.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
             this.btnGestionarPermisos.IconColor = System.Drawing.Color.Black;
             this.btnGestionarPermisos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarPermisos.Location = new System.Drawing.Point(438, 37);
+            this.btnGestionarPermisos.Location = new System.Drawing.Point(438, 63);
             this.btnGestionarPermisos.Name = "btnGestionarPermisos";
             this.btnGestionarPermisos.Size = new System.Drawing.Size(256, 132);
             this.btnGestionarPermisos.TabIndex = 4;
@@ -84,18 +85,30 @@
             this.btnchangePass.UseVisualStyleBackColor = false;
             this.btnchangePass.Click += new System.EventHandler(this.btnchangePass_Click);
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(365, 24);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(44, 16);
+            this.lblUsuario.TabIndex = 6;
+            this.lblUsuario.Text = "label1";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnchangePass);
             this.Controls.Add(this.btnGestionarPermisos);
             this.Controls.Add(this.btnGestionarUsuarios);
             this.Name = "Menu";
             this.Text = "Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_FormClosed);
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -103,5 +116,6 @@
         private FontAwesome.Sharp.IconButton btnGestionarUsuarios;
         private FontAwesome.Sharp.IconButton btnGestionarPermisos;
         private FontAwesome.Sharp.IconButton btnchangePass;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

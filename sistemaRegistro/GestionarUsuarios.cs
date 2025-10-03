@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
@@ -10,17 +11,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BCrypt.Net;
+using FontAwesome.Sharp;
 using static sistemaRegistro.Login;
 
 namespace sistemaRegistro
 {
     public partial class GestionarUsuarios : Form
     {
+        int idActual = Session.UsuarioID;
         public GestionarUsuarios()
         {
             InitializeComponent();
             cargarUsuario();
             cargarCombos();
+            permisos();
+        }
+        private void verificarPermisos()
+        {
+
         }
         private void cargarUsuario()
         {
@@ -55,6 +63,14 @@ namespace sistemaRegistro
         {
 
         }
+        private void crearPermisos()
+        {
+            if (cmbRol.SelectedIndex == 0)
+            {
+
+
+            }
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -78,7 +94,8 @@ namespace sistemaRegistro
 
                 string insertSql = @"INSERT INTO tbUsuario
                              (nombreUsuario, correo, pass, rol, estado)
-                             VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado)";
+                             VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado);
+                             SELECT SCOPE_IDENTITY();"; //OBTENIENDO EL ÚLTIMO ID
                 using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
                 {
                     insertCmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
@@ -89,12 +106,76 @@ namespace sistemaRegistro
                         cmbRol.SelectedItem.ToString());
                     insertCmd.Parameters.AddWithValue("@Estado",
                         cmbEstado.SelectedValue);
+                    object idgenerado = insertCmd.ExecuteScalar();
+                    int nuevoId = Convert.ToInt32(idgenerado);
 
-                    insertCmd.ExecuteNonQuery();
+                    if (cmbRol.SelectedIndex == 0)
+                    {
+                        accesoFormularioAdmin(nuevoId);
+
+                    }
+                    else if (cmbRol.SelectedIndex == 1){
+                        accesoFormularioUsuario(nuevoId);
+                    }
+
+                    
+
                 }
             }
 
             cargarUsuario();
+        }
+        private void accesoFormularioAdmin(int id)
+        {
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+
+                string insertSql = @"INSERT INTO tbAccesoFormulario (idUsuario, idFormulario)
+                             VALUES (@idUsuario, 1), (@idUsuario, 2);";
+                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@idUsuario", id);
+
+                    insertCmd.ExecuteNonQuery();
+
+                }
+                //Dar permisos de formularios
+                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, idFormulario, lectura, escritura, eliminacion)
+                             VALUES (@idUsuario, 1, 1, 1, 1), (@idUsuario, 2, 1, 1, 1);";
+                using (SqlCommand insertCmd2 = new SqlCommand(insertSql2, con))
+                {
+                    insertCmd2.Parameters.AddWithValue("@idUsuario", id);
+
+                    insertCmd2.ExecuteNonQuery();
+
+                }
+            }
+        }
+        private void accesoFormularioUsuario(int id)
+        {
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+
+                string insertSql = @"INSERT INTO tbAccesoFormulario (idUsuario, idFormulario)
+                             VALUES (@idUsuario, 1), (@idUsuario, 2);";
+                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@idUsuario", id);
+
+                    insertCmd.ExecuteNonQuery();
+
+                }
+                //Dar permisos de formularios
+                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, idFormulario, lectura, escritura, eliminacion)
+                             VALUES (@idUsuario, 1, 0, 0, 0), (@idUsuario, 2, 0, 0, 0);";
+                using (SqlCommand insertCmd2 = new SqlCommand(insertSql2, con))
+                {
+                    insertCmd2.Parameters.AddWithValue("@idUsuario", id);
+
+                    insertCmd2.ExecuteNonQuery();
+
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -148,6 +229,54 @@ namespace sistemaRegistro
                 MessageBox.Show("Usuario Eliminado Correctamente");
             }
             cargarUsuario();
+        }
+
+        private void permisos()
+        {
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+                // Lectura
+                SqlCommand cmd = new SqlCommand("SELECT lectura FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                cmd.Parameters.AddWithValue("@idUsuario", idActual);
+                object resultLectura = cmd.ExecuteScalar();
+
+                // Escritura
+                SqlCommand cmd2 = new SqlCommand("SELECT escritura FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                cmd2.Parameters.AddWithValue("@idUsuario", idActual);
+                object resultEscritura = cmd2.ExecuteScalar();
+
+                // Eliminación
+                SqlCommand cmd3 = new SqlCommand("SELECT eliminacion FROM tbPermisoFormulario WHERE idUsuario = @idUsuario", con);
+                cmd3.Parameters.AddWithValue("@idUsuario", idActual);
+                object resultEliminacion = cmd3.ExecuteScalar();
+
+                // Bloquear si no tiene escritura
+                if (resultEscritura != null && Convert.ToInt32(resultEscritura) == 0)
+                {
+                    textBox();
+                }
+
+                // Bloquear si no tiene eliminación
+                if (resultEliminacion != null && Convert.ToInt32(resultEliminacion) == 0)
+                {
+                    permisoEliminar();
+                }
+            }
+        }
+        private void permisoEliminar()
+        {
+            btnEliminar.Enabled = false;
+        }
+        private void textBox()
+        {
+            txtId.ReadOnly= true;
+            txtNombre.ReadOnly = true;
+            txtCorreo.ReadOnly = true;
+            txtPass.ReadOnly = true;
+            cmbRol.Enabled = false;
+            cmbEstado.Enabled = false;
+            btnGuardar.Enabled = false;
+            btnEditar.Enabled = false;
         }
     }
 }

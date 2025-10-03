@@ -36,7 +36,6 @@
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.chbLeer = new System.Windows.Forms.CheckBox();
             this.chbEliminar = new System.Windows.Forms.CheckBox();
             this.chbEditar = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -118,16 +117,6 @@
             this.txtId.Size = new System.Drawing.Size(100, 22);
             this.txtId.TabIndex = 9;
             // 
-            // chbLeer
-            // 
-            this.chbLeer.AutoSize = true;
-            this.chbLeer.Location = new System.Drawing.Point(245, 217);
-            this.chbLeer.Name = "chbLeer";
-            this.chbLeer.Size = new System.Drawing.Size(56, 20);
-            this.chbLeer.TabIndex = 15;
-            this.chbLeer.Text = "Leer";
-            this.chbLeer.UseVisualStyleBackColor = true;
-            // 
             // chbEliminar
             // 
             this.chbEliminar.AutoSize = true;
@@ -159,6 +148,7 @@
             // 
             // cmbRol
             // 
+            this.cmbRol.Enabled = false;
             this.cmbRol.FormattingEnabled = true;
             this.cmbRol.Location = new System.Drawing.Point(166, 185);
             this.cmbRol.Name = "cmbRol";
@@ -190,6 +180,7 @@
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // GestionarPermisos
             // 
@@ -202,7 +193,6 @@
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.chbEditar);
             this.Controls.Add(this.chbEliminar);
-            this.Controls.Add(this.chbLeer);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -230,7 +220,6 @@
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.CheckBox chbLeer;
         private System.Windows.Forms.CheckBox chbEliminar;
         private System.Windows.Forms.CheckBox chbEditar;
         private System.Windows.Forms.Label label5;

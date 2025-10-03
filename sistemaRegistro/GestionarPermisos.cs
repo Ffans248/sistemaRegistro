@@ -34,6 +34,9 @@ namespace sistemaRegistro
 
         private void dgvPermisos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            chbEditar.Checked = false;
+           // chbLeer.Checked = false;
+            chbEliminar.Checked = false;
 
             if (e.RowIndex >= 0)
             {
@@ -72,26 +75,24 @@ namespace sistemaRegistro
                     {
                         bool lectura = Convert.ToBoolean(resultLectura);
                         //marcando el checkbox
-                        chbLeer.Checked = lectura;
-                        chbEditar.Checked = false;
-                        chbEliminar.Checked = false;
+                      //  chbLeer.Checked = lectura;
+                        
                     }
-                    else if (resultEscritura != null && resultEscritura != DBNull.Value)
+                    if (resultEscritura != null && resultEscritura != DBNull.Value)
                     {
                         bool escritura = Convert.ToBoolean(resultEscritura);
                         //marcando el checkbox
-                        chbLeer.Checked = false;
+                        
                         chbEditar.Checked = escritura;
-                        chbEliminar.Checked = false;
+                        
 
                     }
-                    else if (resultEliminacion != null && resultEliminacion != DBNull.Value)
+                    if (resultEliminacion != null && resultEliminacion != DBNull.Value)
                     {
 
                         bool eliminacion = Convert.ToBoolean(resultEliminacion);
                         //marcando el checkbox
-                        chbLeer.Checked = false;
-                        chbEditar.Checked = false;
+                        
                         chbEliminar.Checked = eliminacion;
 
                     }
@@ -107,6 +108,39 @@ namespace sistemaRegistro
 
         private void GestionarPermisos_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            int idUsuario = Convert.ToInt32(txtId.Text);
+
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
+                // valores por defecto false
+               // bool leer = chbLeer.Checked;
+                bool editar = chbEditar.Checked;
+                bool eliminar = chbEliminar.Checked;
+
+                string query = @"UPDATE tbPermisoFormulario 
+                         SET lectura = @leer, 
+                             escritura = @editar, 
+                             eliminacion = @eliminar 
+                         WHERE idUsuario = @idUsuario 
+                         AND idFormulario = 1;";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+
+                // Agregar SIEMPRE los parámetros
+              //  cmd.Parameters.AddWithValue("@leer", leer);
+                cmd.Parameters.AddWithValue("@editar", editar);
+                cmd.Parameters.AddWithValue("@eliminar", eliminar);
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Usuario actualizado correctamente");
+            }
+
 
         }
     }

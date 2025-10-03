@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections;
 
 namespace sistemaRegistro
 {
@@ -85,7 +86,7 @@ namespace sistemaRegistro
             GestionarUsuarios gestionarUsuarios = new GestionarUsuarios();
             gestionarUsuarios.ShowDialog();
         }
-       
+
         private bool AutenticarUsuario(string nombreUsuario, string passwordIngresada)
         {
             string hashBD = null;
@@ -93,6 +94,7 @@ namespace sistemaRegistro
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
                 string sql = "SELECT pass FROM tbUsuario WHERE nombreUsuario = @Nombre";
+
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     cmd.Parameters.AddWithValue("@Nombre", nombreUsuario);
@@ -106,12 +108,31 @@ namespace sistemaRegistro
                         // Usuario no encontrado
                         return false;
                     }
-                }
-            }
+                    string queryId = "SELECT idUsuario, nombreUsuario, correo, rol, estado FROM tbUsuario WHERE nombreUsuario = @Nombre";
+                    using (SqlCommand cmd2 = new SqlCommand(queryId, con))
+                    {
+                        cmd2.Parameters.AddWithValue("@Nombre", nombreUsuario);
+                        using (SqlDataReader reader = cmd2.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Guardamos los datos de la sesion
+                                Session.UsuarioID = reader.GetInt32(0); 
+                                Session.NombreUsuario = reader.GetString(1);
+                                Session.Correo = reader.GetString(2);
+                                Session.Rol = reader.GetString(3);
+                                Session.Estado = reader.GetBoolean(4);
+                            }
 
-            // Verificar la contraseña ingresada contra el hash guardado
-            bool esCorrecta = BCrypt.Net.BCrypt.Verify(passwordIngresada, hashBD);
-            return esCorrecta;
+
+                        }
+                    }
+                }
+
+                // Verificar la contraseña ingresada contra el hash guardado
+                bool esCorrecta = BCrypt.Net.BCrypt.Verify(passwordIngresada, hashBD);
+                return esCorrecta;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

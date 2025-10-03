@@ -114,6 +114,7 @@
     <Compile Include="recuperar.Designer.cs">
       <DependentUpon>recuperar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Session.cs" />
     <EmbeddedResource Include="crearUsuario.resx">
       <DependentUpon>crearUsuario.cs</DependentUpon>
     </EmbeddedResource>
