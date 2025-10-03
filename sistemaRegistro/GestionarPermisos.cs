@@ -53,7 +53,8 @@ namespace sistemaRegistro
                 }
                 using (SqlConnection con = new Conexion().AbrirConexion())
                 {
-                    SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM tbUsuario", con);
+                    SqlDataAdapter da = new SqlDataAdapter("SELECT lectura FROM tbPermisoFormulario where idUsuario=@idUsuario", con);
+                    .Parameters.addWithValue("@idUsuario")
                 }
                 
 
