@@ -117,31 +117,5 @@ namespace sistemaRegistro
             MessageBox.Show("Categorías asignadas correctamente al producto.");
             CargarAsignaciones();
         }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (dgvAsignaciones.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione una fila de la tabla para eliminar la asignación.");
-                return;
-            }
-
-            int idProducto = Convert.ToInt32(dgvAsignaciones.SelectedRows[0].Cells["idProducto"].Value);
-            string categoria = dgvAsignaciones.SelectedRows[0].Cells["Categoria"].Value.ToString();
-
-            using (SqlConnection con = new Conexion().AbrirConexion())
-            {
-                SqlCommand cmd = new SqlCommand(@"
-                    DELETE pc 
-                    FROM tbProductoCategoria pc
-                    INNER JOIN tbCategoria c ON pc.idCategoria = c.idCategoria
-                    WHERE pc.idProducto = @Prod AND c.nombreCategoria = @Cat", con);
-                cmd.Parameters.AddWithValue("@Prod", idProducto);
-                cmd.Parameters.AddWithValue("@Cat", categoria);
-                cmd.ExecuteNonQuery();
-            }
-            MessageBox.Show("Asignación eliminada correctamente.");
-            CargarAsignaciones();
-        }
     }
 }
