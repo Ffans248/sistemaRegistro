@@ -82,6 +82,12 @@
     <Compile Include="crearUsuario.Designer.cs">
       <DependentUpon>crearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios.Designer.cs">
+      <DependentUpon>Formularios.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionarPermisos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Session.cs" />
     <EmbeddedResource Include="crearUsuario.resx">
       <DependentUpon>crearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios.resx">
+      <DependentUpon>Formularios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionarPermisos.resx">
       <DependentUpon>GestionarPermisos.cs</DependentUpon>
