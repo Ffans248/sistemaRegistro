@@ -49,6 +49,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtStockMinimo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,6 @@
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(121, 22);
             this.txtDescuento.TabIndex = 60;
-            this.txtDescuento.UseSystemPasswordChar = true;
             // 
             // txtPrecioVenta
             // 
@@ -66,7 +66,6 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(121, 22);
             this.txtPrecioVenta.TabIndex = 59;
-            this.txtPrecioVenta.UseSystemPasswordChar = true;
             // 
             // btnEliminar
             // 
@@ -193,7 +192,6 @@
             this.txtPrecioCosto.Name = "txtPrecioCosto";
             this.txtPrecioCosto.Size = new System.Drawing.Size(121, 22);
             this.txtPrecioCosto.TabIndex = 48;
-            this.txtPrecioCosto.UseSystemPasswordChar = true;
             // 
             // txtDescripcion
             // 
@@ -235,7 +233,6 @@
             this.txtStockActual.Name = "txtStockActual";
             this.txtStockActual.Size = new System.Drawing.Size(121, 22);
             this.txtStockActual.TabIndex = 62;
-            this.txtStockActual.UseSystemPasswordChar = true;
             // 
             // label8
             // 
@@ -252,7 +249,6 @@
             this.txtStockMinimo.Name = "txtStockMinimo";
             this.txtStockMinimo.Size = new System.Drawing.Size(121, 22);
             this.txtStockMinimo.TabIndex = 64;
-            this.txtStockMinimo.UseSystemPasswordChar = true;
             // 
             // label9
             // 
@@ -263,11 +259,22 @@
             this.label9.TabIndex = 63;
             this.label9.Text = "Stock Minimo:";
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(726, 12);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(85, 40);
+            this.btnRegresar.TabIndex = 65;
+            this.btnRegresar.Text = "Menú";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 554);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.txtStockMinimo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtStockActual);
@@ -291,6 +298,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Name = "Productos";
             this.Text = "Productos";
+            this.Load += new System.EventHandler(this.Productos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,5 +328,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtStockMinimo;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

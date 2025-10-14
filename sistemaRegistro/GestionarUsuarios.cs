@@ -278,5 +278,12 @@ namespace sistemaRegistro
             btnGuardar.Enabled = false;
             btnEditar.Enabled = false;
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
     }
 }

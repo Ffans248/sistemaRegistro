@@ -46,14 +46,16 @@ namespace sistemaRegistro
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                clbCategorias.Items.Clear();
+                flowLayoutPanel1.Controls.Clear();
+
                 foreach (DataRow fila in dt.Rows)
                 {
-                    clbCategorias.Items.Add(new
-                    {
-                        Id = fila["idCategoria"],
-                        Nombre = fila["nombreCategoria"]
-                    }, false);
+                    CheckBox cb = new CheckBox();
+                    cb.Text = fila["nombreCategoria"].ToString();
+                    cb.Tag = fila["idCategoria"];
+                    cb.AutoSize = true;
+                    cb.Margin = new Padding(5);
+                    flowLayoutPanel1.Controls.Add(cb);
                 }
             }
         }
@@ -102,20 +104,39 @@ namespace sistemaRegistro
                 del.ExecuteNonQuery();
 
                 // Insertar nuevas asignaciones
-                foreach (var item in clbCategorias.CheckedItems)
+                foreach (Control ctrl in flowLayoutPanel1.Controls)
                 {
-                    dynamic cat = item;
-                    int idCat = Convert.ToInt32(cat.Id);
-
-                    SqlCommand ins = new SqlCommand("INSERT INTO tbProductoCategoria (idProducto, idCategoria) VALUES (@Prod, @Cat)", con);
-                    ins.Parameters.AddWithValue("@Prod", idProducto);
-                    ins.Parameters.AddWithValue("@Cat", idCat);
-                    ins.ExecuteNonQuery();
+                    if (ctrl is CheckBox cb && cb.Checked)
+                    {
+                        int idCat = Convert.ToInt32(cb.Tag);
+                        SqlCommand ins = new SqlCommand(
+                            "INSERT INTO tbProductoCategoria (idProducto, idCategoria) VALUES (@Prod, @Cat)", con);
+                        ins.Parameters.AddWithValue("@Prod", idProducto);
+                        ins.Parameters.AddWithValue("@Cat", idCat);
+                        ins.ExecuteNonQuery();
+                    }
                 }
             }
 
             MessageBox.Show("Categorías asignadas correctamente al producto.");
             CargarAsignaciones();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
+
+        private void clbCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
