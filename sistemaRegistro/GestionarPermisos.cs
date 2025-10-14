@@ -123,7 +123,7 @@ namespace sistemaRegistro
                 bool eliminar = chbEliminar.Checked;
 
                 string query = @"UPDATE tbPermisoFormulario 
-                         SET lectura = @leer, 
+                         SET 
                              escritura = @editar, 
                              eliminacion = @eliminar 
                          WHERE idUsuario = @idUsuario 
