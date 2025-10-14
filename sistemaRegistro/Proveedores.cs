@@ -17,6 +17,7 @@ namespace sistemaRegistro
         public Proveedores()
         {
             InitializeComponent();
+            cargarProveedor();
         }
         private void cargarProveedor()
         {
@@ -116,6 +117,18 @@ namespace sistemaRegistro
                 MessageBox.Show("Proveedor Eliminado Correctamente");
             }
             cargarProveedor();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
+
+        private void Proveedores_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

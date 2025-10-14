@@ -45,6 +45,7 @@
             this.dgvProveedores = new System.Windows.Forms.DataGridView();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,7 +173,6 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(121, 22);
             this.txtDireccion.TabIndex = 30;
-            this.txtDireccion.UseSystemPasswordChar = true;
             // 
             // txtNit
             // 
@@ -214,7 +214,6 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(121, 22);
             this.txtTelefono.TabIndex = 42;
-            this.txtTelefono.UseSystemPasswordChar = true;
             // 
             // txtCorreo
             // 
@@ -222,13 +221,23 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(121, 22);
             this.txtCorreo.TabIndex = 43;
-            this.txtCorreo.UseSystemPasswordChar = true;
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(749, 19);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(85, 40);
+            this.btnRegresar.TabIndex = 66;
+            this.btnRegresar.Text = "Menú";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // Proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 553);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.btnEliminar);
@@ -248,6 +257,7 @@
             this.Controls.Add(this.dgvProveedores);
             this.Name = "Proveedores";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Proveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -273,5 +283,6 @@
         private System.Windows.Forms.DataGridView dgvProveedores;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

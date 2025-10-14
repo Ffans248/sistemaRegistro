@@ -32,6 +32,10 @@
             this.btnGestionarPermisos = new FontAwesome.Sharp.IconButton();
             this.btnchangePass = new FontAwesome.Sharp.IconButton();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.btnProductos = new FontAwesome.Sharp.IconButton();
+            this.btnCategorias = new FontAwesome.Sharp.IconButton();
+            this.btnProveedores = new FontAwesome.Sharp.IconButton();
+            this.btnAsignaciones = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // btnGestionarUsuarios
@@ -42,9 +46,9 @@
             this.btnGestionarUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
             this.btnGestionarUsuarios.IconColor = System.Drawing.Color.Black;
             this.btnGestionarUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarUsuarios.Location = new System.Drawing.Point(54, 63);
+            this.btnGestionarUsuarios.Location = new System.Drawing.Point(92, 67);
             this.btnGestionarUsuarios.Name = "btnGestionarUsuarios";
-            this.btnGestionarUsuarios.Size = new System.Drawing.Size(256, 132);
+            this.btnGestionarUsuarios.Size = new System.Drawing.Size(165, 94);
             this.btnGestionarUsuarios.TabIndex = 3;
             this.btnGestionarUsuarios.Text = "Gestionar Usuarios";
             this.btnGestionarUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -59,9 +63,9 @@
             this.btnGestionarPermisos.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
             this.btnGestionarPermisos.IconColor = System.Drawing.Color.Black;
             this.btnGestionarPermisos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGestionarPermisos.Location = new System.Drawing.Point(438, 63);
+            this.btnGestionarPermisos.Location = new System.Drawing.Point(310, 67);
             this.btnGestionarPermisos.Name = "btnGestionarPermisos";
-            this.btnGestionarPermisos.Size = new System.Drawing.Size(256, 132);
+            this.btnGestionarPermisos.Size = new System.Drawing.Size(165, 94);
             this.btnGestionarPermisos.TabIndex = 4;
             this.btnGestionarPermisos.Text = "Gestionar Permisos";
             this.btnGestionarPermisos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -76,9 +80,9 @@
             this.btnchangePass.IconChar = FontAwesome.Sharp.IconChar.Key;
             this.btnchangePass.IconColor = System.Drawing.Color.Black;
             this.btnchangePass.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnchangePass.Location = new System.Drawing.Point(268, 223);
+            this.btnchangePass.Location = new System.Drawing.Point(524, 67);
             this.btnchangePass.Name = "btnchangePass";
-            this.btnchangePass.Size = new System.Drawing.Size(256, 132);
+            this.btnchangePass.Size = new System.Drawing.Size(165, 94);
             this.btnchangePass.TabIndex = 5;
             this.btnchangePass.Text = "Cambiar Contraseña";
             this.btnchangePass.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -88,17 +92,89 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(365, 24);
+            this.lblUsuario.Location = new System.Drawing.Point(365, 9);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(44, 16);
             this.lblUsuario.TabIndex = 6;
             this.lblUsuario.Text = "label1";
             // 
+            // btnProductos
+            // 
+            this.btnProductos.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnProductos.FlatAppearance.BorderSize = 0;
+            this.btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductos.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.btnProductos.IconColor = System.Drawing.Color.Black;
+            this.btnProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProductos.Location = new System.Drawing.Point(524, 204);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(165, 94);
+            this.btnProductos.TabIndex = 9;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            // 
+            // btnCategorias
+            // 
+            this.btnCategorias.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnCategorias.FlatAppearance.BorderSize = 0;
+            this.btnCategorias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategorias.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            this.btnCategorias.IconColor = System.Drawing.Color.Black;
+            this.btnCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCategorias.Location = new System.Drawing.Point(310, 204);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(165, 94);
+            this.btnCategorias.TabIndex = 8;
+            this.btnCategorias.Text = "Categorias";
+            this.btnCategorias.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnCategorias.UseVisualStyleBackColor = false;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            // 
+            // btnProveedores
+            // 
+            this.btnProveedores.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnProveedores.FlatAppearance.BorderSize = 0;
+            this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProveedores.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnProveedores.IconColor = System.Drawing.Color.Black;
+            this.btnProveedores.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProveedores.Location = new System.Drawing.Point(92, 204);
+            this.btnProveedores.Name = "btnProveedores";
+            this.btnProveedores.Size = new System.Drawing.Size(165, 94);
+            this.btnProveedores.TabIndex = 7;
+            this.btnProveedores.Text = "Proveedores";
+            this.btnProveedores.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnProveedores.UseVisualStyleBackColor = false;
+            this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            // 
+            // btnAsignaciones
+            // 
+            this.btnAsignaciones.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnAsignaciones.FlatAppearance.BorderSize = 0;
+            this.btnAsignaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsignaciones.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            this.btnAsignaciones.IconColor = System.Drawing.Color.Black;
+            this.btnAsignaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAsignaciones.Location = new System.Drawing.Point(310, 344);
+            this.btnAsignaciones.Name = "btnAsignaciones";
+            this.btnAsignaciones.Size = new System.Drawing.Size(165, 94);
+            this.btnAsignaciones.TabIndex = 10;
+            this.btnAsignaciones.Text = "Asignar Categorias";
+            this.btnAsignaciones.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnAsignaciones.UseVisualStyleBackColor = false;
+            this.btnAsignaciones.Click += new System.EventHandler(this.btnAsignaciones_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 478);
+            this.Controls.Add(this.btnAsignaciones);
+            this.Controls.Add(this.btnProductos);
+            this.Controls.Add(this.btnCategorias);
+            this.Controls.Add(this.btnProveedores);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnchangePass);
             this.Controls.Add(this.btnGestionarPermisos);
@@ -117,5 +193,9 @@
         private FontAwesome.Sharp.IconButton btnGestionarPermisos;
         private FontAwesome.Sharp.IconButton btnchangePass;
         private System.Windows.Forms.Label lblUsuario;
+        private FontAwesome.Sharp.IconButton btnProductos;
+        private FontAwesome.Sharp.IconButton btnCategorias;
+        private FontAwesome.Sharp.IconButton btnProveedores;
+        private FontAwesome.Sharp.IconButton btnAsignaciones;
     }
 }

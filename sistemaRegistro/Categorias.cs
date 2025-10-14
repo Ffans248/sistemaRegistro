@@ -17,13 +17,14 @@ namespace sistemaRegistro
         public Categorias()
         {
             InitializeComponent();
+            cargarCategoria();
         }
         private void cargarCategoria()
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-                SqlDataAdapter da = new SqlDataAdapter("SELECT idCategoria, " +
-                    "nombreCategoria, descripcion", con);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT idCategoria, nombreCategoria, descripcion FROM tbCategoria", con);
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvDescripcion.DataSource = dt;
@@ -105,6 +106,18 @@ namespace sistemaRegistro
                 txtNombre.Text = fila.Cells["nombreCategoria"].Value.ToString();
                 txtDescripcion.Text = fila.Cells["descripcion"].Value.ToString();
             }
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
+
+        private void Categorias_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
