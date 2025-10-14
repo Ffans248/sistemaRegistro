@@ -71,7 +71,33 @@ namespace sistemaRegistro
 
             }
         }
+        private void crearAccesosForms()
+        {
+            using (SqlConnection con = new Conexion().AbrirConexion())
+            {
 
+                
+
+                string insertSql = @"INSERT INTO tbFormulario
+                             (nombreUsuario, descripcion, p, rol, estado)
+                             VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado);
+                             SELECT SCOPE_IDENTITY();"; //OBTENIENDO EL ÚLTIMO ID
+                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
+                    insertCmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
+                    insertCmd.Parameters.AddWithValue("@Pass",
+                        BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
+                    insertCmd.Parameters.AddWithValue("@Rol",
+                        cmbRol.SelectedItem.ToString());
+                    insertCmd.Parameters.AddWithValue("@Estado",
+                        cmbEstado.SelectedValue);
+                    object idgenerado = insertCmd.ExecuteScalar();
+                    int nuevoId = Convert.ToInt32(idgenerado);
+
+                }
+            }
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
