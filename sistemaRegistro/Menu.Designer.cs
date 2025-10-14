@@ -36,6 +36,9 @@
             this.btnCategorias = new FontAwesome.Sharp.IconButton();
             this.btnProveedores = new FontAwesome.Sharp.IconButton();
             this.btnAsignaciones = new FontAwesome.Sharp.IconButton();
+            this.btnFormularios = new FontAwesome.Sharp.IconButton();
+            this.btnCompras = new FontAwesome.Sharp.IconButton();
+            this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // btnGestionarUsuarios
@@ -166,11 +169,65 @@
             this.btnAsignaciones.UseVisualStyleBackColor = false;
             this.btnAsignaciones.Click += new System.EventHandler(this.btnAsignaciones_Click);
             // 
+            // btnFormularios
+            // 
+            this.btnFormularios.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnFormularios.FlatAppearance.BorderSize = 0;
+            this.btnFormularios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFormularios.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.btnFormularios.IconColor = System.Drawing.Color.Black;
+            this.btnFormularios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFormularios.Location = new System.Drawing.Point(92, 344);
+            this.btnFormularios.Name = "btnFormularios";
+            this.btnFormularios.Size = new System.Drawing.Size(165, 94);
+            this.btnFormularios.TabIndex = 11;
+            this.btnFormularios.Text = "Permisos a formularios";
+            this.btnFormularios.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnFormularios.UseVisualStyleBackColor = false;
+            this.btnFormularios.Click += new System.EventHandler(this.btnFormularios_Click);
+            // 
+            // btnCompras
+            // 
+            this.btnCompras.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnCompras.FlatAppearance.BorderSize = 0;
+            this.btnCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompras.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.btnCompras.IconColor = System.Drawing.Color.Black;
+            this.btnCompras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCompras.Location = new System.Drawing.Point(524, 344);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(165, 94);
+            this.btnCompras.TabIndex = 12;
+            this.btnCompras.Text = "Compras";
+            this.btnCompras.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnCompras.UseVisualStyleBackColor = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.btnReportes.IconColor = System.Drawing.Color.Black;
+            this.btnReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReportes.Location = new System.Drawing.Point(92, 483);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(165, 94);
+            this.btnReportes.TabIndex = 13;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 478);
+            this.ClientSize = new System.Drawing.Size(835, 607);
+            this.Controls.Add(this.btnReportes);
+            this.Controls.Add(this.btnCompras);
+            this.Controls.Add(this.btnFormularios);
             this.Controls.Add(this.btnAsignaciones);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnCategorias);
@@ -197,5 +254,8 @@
         private FontAwesome.Sharp.IconButton btnCategorias;
         private FontAwesome.Sharp.IconButton btnProveedores;
         private FontAwesome.Sharp.IconButton btnAsignaciones;
+        private FontAwesome.Sharp.IconButton btnFormularios;
+        private FontAwesome.Sharp.IconButton btnCompras;
+        private FontAwesome.Sharp.IconButton btnReportes;
     }
 }

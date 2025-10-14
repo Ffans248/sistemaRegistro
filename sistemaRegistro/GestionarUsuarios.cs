@@ -25,6 +25,7 @@ namespace sistemaRegistro
             cargarUsuario();
             cargarCombos();
             permisos();
+            
         }
         private void verificarPermisos()
         {
@@ -71,33 +72,42 @@ namespace sistemaRegistro
 
             }
         }
-        private void crearAccesosForms()
+        private void crearAccesosForms(int idActual)
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-
-                
+                // Lista de formularios con nombre y descripción
+                var formularios = new List<(string Nombre, string Descripcion)>
+        {
+            ("Gestionar Permisos", "Formulario para la gestión de permisos"),
+            ("Gestionar Usuarios", "Formulario para la gestión de usuarios"),
+            ("Formularios", "Formulario para la administración de formularios"),
+            ("Categorías", "Formulario para gestionar categorías"),
+            ("Productos", "Formulario para gestionar productos"),
+            ("Proveedores", "Formulario para gestionar proveedores"),
+            ("Productos Categorías", "Formulario para asociar productos y categorías"),
+            ("Compras", "Formulario para registrar compras"),
+            ("Reportes", "Formulario para visualizar reportes")
+        };
 
                 string insertSql = @"INSERT INTO tbFormulario
-                             (nombreUsuario, descripcion, p, rol, estado)
-                             VALUES (@Nombre, @Correo, @Pass, @Rol, @Estado);
-                             SELECT SCOPE_IDENTITY();"; //OBTENIENDO EL ÚLTIMO ID
-                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
-                {
-                    insertCmd.Parameters.AddWithValue("@Nombre", txtNombre.Text);
-                    insertCmd.Parameters.AddWithValue("@Correo", txtCorreo.Text);
-                    insertCmd.Parameters.AddWithValue("@Pass",
-                        BCrypt.Net.BCrypt.HashPassword(txtPass.Text));
-                    insertCmd.Parameters.AddWithValue("@Rol",
-                        cmbRol.SelectedItem.ToString());
-                    insertCmd.Parameters.AddWithValue("@Estado",
-                        cmbEstado.SelectedValue);
-                    object idgenerado = insertCmd.ExecuteScalar();
-                    int nuevoId = Convert.ToInt32(idgenerado);
+                            (nombreFormulario, descripcion, idUsuario, permiso)
+                            VALUES (@Nombre, @Descripcion, @idUsuario, @Permiso);";
 
+                foreach (var form in formularios)
+                {
+                    using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
+                    {
+                        insertCmd.Parameters.AddWithValue("@Nombre", form.Nombre);
+                        insertCmd.Parameters.AddWithValue("@Descripcion", form.Descripcion);
+                        insertCmd.Parameters.AddWithValue("@idUsuario", idActual);
+                        insertCmd.Parameters.AddWithValue("@Permiso", true);
+                        insertCmd.ExecuteNonQuery();
+                    }
                 }
             }
         }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
@@ -138,10 +148,12 @@ namespace sistemaRegistro
                     if (cmbRol.SelectedIndex == 0)
                     {
                         accesoFormularioAdmin(nuevoId);
+                        crearAccesosForms(nuevoId);
 
                     }
                     else if (cmbRol.SelectedIndex == 1){
                         accesoFormularioUsuario(nuevoId);
+                        crearAccesosForms(nuevoId);
                     }
 
                     
@@ -156,18 +168,10 @@ namespace sistemaRegistro
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
 
-                string insertSql = @"INSERT INTO tbAccesoFormulario (idUsuario, idFormulario)
-                             VALUES (@idUsuario, 1), (@idUsuario, 2);";
-                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
-                {
-                    insertCmd.Parameters.AddWithValue("@idUsuario", id);
-
-                    insertCmd.ExecuteNonQuery();
-
-                }
+                
                 //Dar permisos de formularios
-                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, idFormulario, lectura, escritura, eliminacion)
-                             VALUES (@idUsuario, 1, 1, 1, 1), (@idUsuario, 2, 1, 1, 1);";
+                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, lectura, escritura, eliminacion)
+                             VALUES (@idUsuario, 1, 1, 1)";
                 using (SqlCommand insertCmd2 = new SqlCommand(insertSql2, con))
                 {
                     insertCmd2.Parameters.AddWithValue("@idUsuario", id);
@@ -182,18 +186,10 @@ namespace sistemaRegistro
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
 
-                string insertSql = @"INSERT INTO tbAccesoFormulario (idUsuario, idFormulario)
-                             VALUES (@idUsuario, 1), (@idUsuario, 2);";
-                using (SqlCommand insertCmd = new SqlCommand(insertSql, con))
-                {
-                    insertCmd.Parameters.AddWithValue("@idUsuario", id);
-
-                    insertCmd.ExecuteNonQuery();
-
-                }
+                
                 //Dar permisos de formularios
-                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, idFormulario, lectura, escritura, eliminacion)
-                             VALUES (@idUsuario, 1, 0, 0, 0), (@idUsuario, 2, 0, 0, 0);";
+                string insertSql2 = @"INSERT INTO tbPermisoFormulario (idUsuario, lectura, escritura, eliminacion)
+                             VALUES (@idUsuario, 1, 1, 1)";
                 using (SqlCommand insertCmd2 = new SqlCommand(insertSql2, con))
                 {
                     insertCmd2.Parameters.AddWithValue("@idUsuario", id);

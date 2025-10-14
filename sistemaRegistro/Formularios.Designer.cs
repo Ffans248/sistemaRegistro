@@ -28,53 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.btnPermitir = new FontAwesome.Sharp.IconButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.dgvPermisos = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).BeginInit();
+            this.dgvFormularios = new System.Windows.Forms.DataGridView();
+            this.btnDenegar = new FontAwesome.Sharp.IconButton();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormularios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnGuardar
+            // btnPermitir
             // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
-            this.btnGuardar.IconColor = System.Drawing.Color.Black;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 20;
-            this.btnGuardar.Location = new System.Drawing.Point(590, 68);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(121, 55);
-            this.btnGuardar.TabIndex = 34;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(82, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 16);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Fórmulario";
-            // 
-            // cmbRol
-            // 
-            this.cmbRol.Enabled = false;
-            this.cmbRol.FormattingEnabled = true;
-            this.cmbRol.Location = new System.Drawing.Point(180, 124);
-            this.cmbRol.Name = "cmbRol";
-            this.cmbRol.Size = new System.Drawing.Size(121, 24);
-            this.cmbRol.TabIndex = 31;
+            this.btnPermitir.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnPermitir.FlatAppearance.BorderSize = 0;
+            this.btnPermitir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPermitir.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnPermitir.IconColor = System.Drawing.Color.Black;
+            this.btnPermitir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPermitir.IconSize = 20;
+            this.btnPermitir.Location = new System.Drawing.Point(226, 457);
+            this.btnPermitir.Name = "btnPermitir";
+            this.btnPermitir.Size = new System.Drawing.Size(121, 55);
+            this.btnPermitir.TabIndex = 34;
+            this.btnPermitir.Text = "Permitir Acceso";
+            this.btnPermitir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPermitir.UseVisualStyleBackColor = false;
+            this.btnPermitir.Click += new System.EventHandler(this.btnPermitir_Click);
             // 
             // label1
             // 
@@ -127,34 +111,65 @@
             this.txtId.Size = new System.Drawing.Size(100, 22);
             this.txtId.TabIndex = 23;
             // 
-            // dgvPermisos
+            // dgvFormularios
             // 
-            this.dgvPermisos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPermisos.Location = new System.Drawing.Point(39, 166);
-            this.dgvPermisos.Name = "dgvPermisos";
-            this.dgvPermisos.RowHeadersWidth = 51;
-            this.dgvPermisos.RowTemplate.Height = 24;
-            this.dgvPermisos.Size = new System.Drawing.Size(672, 251);
-            this.dgvPermisos.TabIndex = 22;
+            this.dgvFormularios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFormularios.Location = new System.Drawing.Point(54, 518);
+            this.dgvFormularios.Name = "dgvFormularios";
+            this.dgvFormularios.RowHeadersWidth = 51;
+            this.dgvFormularios.RowTemplate.Height = 24;
+            this.dgvFormularios.Size = new System.Drawing.Size(672, 251);
+            this.dgvFormularios.TabIndex = 22;
+            this.dgvFormularios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFormularios_CellClick);
+            // 
+            // btnDenegar
+            // 
+            this.btnDenegar.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnDenegar.FlatAppearance.BorderSize = 0;
+            this.btnDenegar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDenegar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnDenegar.IconColor = System.Drawing.Color.Black;
+            this.btnDenegar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnDenegar.IconSize = 20;
+            this.btnDenegar.Location = new System.Drawing.Point(446, 457);
+            this.btnDenegar.Name = "btnDenegar";
+            this.btnDenegar.Size = new System.Drawing.Size(121, 55);
+            this.btnDenegar.TabIndex = 35;
+            this.btnDenegar.Text = "Negar Acceso";
+            this.btnDenegar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDenegar.UseVisualStyleBackColor = false;
+            this.btnDenegar.Click += new System.EventHandler(this.btnDenegar_Click);
+            // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Location = new System.Drawing.Point(54, 139);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.RowHeadersWidth = 51;
+            this.dgvUsuarios.RowTemplate.Height = 24;
+            this.dgvUsuarios.Size = new System.Drawing.Size(672, 251);
+            this.dgvUsuarios.TabIndex = 36;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 725);
-            this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmbRol);
+            this.ClientSize = new System.Drawing.Size(843, 813);
+            this.Controls.Add(this.dgvUsuarios);
+            this.Controls.Add(this.btnDenegar);
+            this.Controls.Add(this.btnPermitir);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtId);
-            this.Controls.Add(this.dgvPermisos);
+            this.Controls.Add(this.dgvFormularios);
             this.Name = "Formularios";
             this.Text = "Formularios";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPermisos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFormularios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,15 +177,15 @@
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton btnGuardar;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbRol;
+        private FontAwesome.Sharp.IconButton btnPermitir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.DataGridView dgvPermisos;
+        private System.Windows.Forms.DataGridView dgvFormularios;
+        private FontAwesome.Sharp.IconButton btnDenegar;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
     }
 }
