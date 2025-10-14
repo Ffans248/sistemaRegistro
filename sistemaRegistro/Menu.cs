@@ -99,5 +99,33 @@ namespace sistemaRegistro
                 }
             }
         }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedores proveedores = new Proveedores();
+            this.Hide();
+            proveedores.ShowDialog();
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            Categorias categorias = new Categorias();
+            this.Hide();
+            categorias.ShowDialog();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            Productos productos = new Productos();
+            this.Hide();
+            productos.ShowDialog();
+        }
+
+        private void btnAsignaciones_Click(object sender, EventArgs e)
+        {
+            productosCategorias asignaciones = new productosCategorias();
+            this.Hide();
+            asignaciones.ShowDialog();
+        }
     }
 }
