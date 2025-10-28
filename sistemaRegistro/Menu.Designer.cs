@@ -39,8 +39,8 @@
             this.btnCompras = new FontAwesome.Sharp.IconButton();
             this.btnReportes = new FontAwesome.Sharp.IconButton();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btnClientes = new FontAwesome.Sharp.IconButton();
+            this.btnVentas = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // btnGestionarUsuarios
@@ -222,47 +222,47 @@
             this.lblUsuario.TabIndex = 6;
             this.lblUsuario.Text = "label1";
             // 
-            // iconButton1
+            // btnClientes
             // 
-            this.iconButton1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(310, 483);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(165, 94);
-            this.iconButton1.TabIndex = 14;
-            this.iconButton1.Text = "Clientes";
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnClientes.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnClientes.IconColor = System.Drawing.Color.Black;
+            this.btnClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnClientes.Location = new System.Drawing.Point(310, 483);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(165, 94);
+            this.btnClientes.TabIndex = 14;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // iconButton2
+            // btnVentas
             // 
-            this.iconButton2.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.Location = new System.Drawing.Point(524, 483);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(165, 94);
-            this.iconButton2.TabIndex = 15;
-            this.iconButton2.Text = "Ventas";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.iconButton2.UseVisualStyleBackColor = false;
-            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            this.btnVentas.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnVentas.FlatAppearance.BorderSize = 0;
+            this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVentas.IconChar = FontAwesome.Sharp.IconChar.UserEdit;
+            this.btnVentas.IconColor = System.Drawing.Color.Black;
+            this.btnVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnVentas.Location = new System.Drawing.Point(524, 483);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(165, 94);
+            this.btnVentas.TabIndex = 15;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnVentas.UseVisualStyleBackColor = false;
+            this.btnVentas.Click += new System.EventHandler(this.iconButton2_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 607);
-            this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.iconButton1);
+            this.ClientSize = new System.Drawing.Size(825, 892);
+            this.Controls.Add(this.btnVentas);
+            this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnReportes);
             this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.btnFormularios);
@@ -295,7 +295,7 @@
         private FontAwesome.Sharp.IconButton btnCompras;
         private FontAwesome.Sharp.IconButton btnReportes;
         private System.Windows.Forms.Label lblUsuario;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnClientes;
+        private FontAwesome.Sharp.IconButton btnVentas;
     }
 }

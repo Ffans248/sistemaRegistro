@@ -63,6 +63,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -168,6 +169,18 @@
     <Compile Include="Reportes.Designer.cs">
       <DependentUpon>Reportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportesCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesCompras.Designer.cs">
+      <DependentUpon>ReportesCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesVentas.Designer.cs">
+      <DependentUpon>ReportesVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="Ventas.cs">
       <SubType>Form</SubType>
@@ -230,6 +243,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes.resx">
       <DependentUpon>Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesCompras.resx">
+      <DependentUpon>ReportesCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesVentas.resx">
+      <DependentUpon>ReportesVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas.resx">
       <DependentUpon>Ventas.cs</DependentUpon>

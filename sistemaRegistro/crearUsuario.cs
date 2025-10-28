@@ -148,7 +148,9 @@ namespace sistemaRegistro
                         ("Proveedores", "Formulario para gestionar proveedores"),
                         ("Productos Categorías", "Formulario para asociar productos y categorías"),
                         ("Compras", "Formulario para registrar compras"),
-                        ("Reportes", "Formulario para visualizar reportes")
+                        ("Reportes", "Formulario para visualizar reportes"),
+                        ("Clientes", "Formulario para administrar clientes"),
+                        ("Ventas", "Formulario para realizar ventas")
                     };
 
                     string insertFormulariosSql = @"INSERT INTO tbFormulario (nombreFormulario, descripcion, idUsuario, permiso)

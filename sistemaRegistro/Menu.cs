@@ -70,7 +70,10 @@ namespace sistemaRegistro
         ("Proveedores", btnProveedores),
         ("Productos Categorías", btnAsignaciones),
         ("Compras", btnCompras),
-        ("Reportes", btnReportes)
+        ("Reportes", btnReportes),
+        ("Ventas", btnVentas),
+        ("Clientes", btnReportes)
+
     };
 
             // Recorre la lista y verifica el permiso de cada uno
