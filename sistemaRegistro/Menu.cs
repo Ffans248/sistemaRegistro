@@ -22,9 +22,9 @@ namespace sistemaRegistro
         }
         private void tetxbox()
         {
-        
-        } 
-       
+
+        }
+
         private void btnGestionarUsuarios_Click(object sender, EventArgs e)
         {
             GestionarUsuarios frmgestionarUsuarios = new GestionarUsuarios();
@@ -83,7 +83,7 @@ namespace sistemaRegistro
         {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
-                string query = @"SELECT permiso 
+                string query = @"SELECT permiso
                          FROM tbFormulario 
                          WHERE idUsuario = @idUsuario AND nombreFormulario = @nombreFormulario";
 
@@ -159,6 +159,20 @@ namespace sistemaRegistro
             this.Hide();
             reportes.ShowDialog();
 
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            Clientes clientes = new Clientes();
+            this.Hide();
+            clientes.ShowDialog();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            Ventas ventas = new Ventas();
+            this.Hide();
+            ventas.ShowDialog();
         }
     }
 }
