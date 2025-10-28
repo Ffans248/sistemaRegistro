@@ -172,5 +172,17 @@ namespace sistemaRegistro
                 txtStockMinimo.Text = fila.Cells["stockMinimo"].Value.ToString();
             }
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
+
+        private void Productos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

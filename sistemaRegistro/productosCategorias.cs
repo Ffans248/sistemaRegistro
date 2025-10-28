@@ -46,14 +46,16 @@ namespace sistemaRegistro
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                clbCategorias.Items.Clear();
+                flowLayoutPanel1.Controls.Clear();
+
                 foreach (DataRow fila in dt.Rows)
                 {
-                    clbCategorias.Items.Add(new
-                    {
-                        Id = fila["idCategoria"],
-                        Nombre = fila["nombreCategoria"]
-                    }, false);
+                    CheckBox cb = new CheckBox();
+                    cb.Text = fila["nombreCategoria"].ToString();
+                    cb.Tag = fila["idCategoria"];
+                    cb.AutoSize = true;
+                    cb.Margin = new Padding(5);
+                    flowLayoutPanel1.Controls.Add(cb);
                 }
             }
         }
@@ -102,15 +104,17 @@ namespace sistemaRegistro
                 del.ExecuteNonQuery();
 
                 // Insertar nuevas asignaciones
-                foreach (var item in clbCategorias.CheckedItems)
+                foreach (Control ctrl in flowLayoutPanel1.Controls)
                 {
-                    dynamic cat = item;
-                    int idCat = Convert.ToInt32(cat.Id);
-
-                    SqlCommand ins = new SqlCommand("INSERT INTO tbProductoCategoria (idProducto, idCategoria) VALUES (@Prod, @Cat)", con);
-                    ins.Parameters.AddWithValue("@Prod", idProducto);
-                    ins.Parameters.AddWithValue("@Cat", idCat);
-                    ins.ExecuteNonQuery();
+                    if (ctrl is CheckBox cb && cb.Checked)
+                    {
+                        int idCat = Convert.ToInt32(cb.Tag);
+                        SqlCommand ins = new SqlCommand(
+                            "INSERT INTO tbProductoCategoria (idProducto, idCategoria) VALUES (@Prod, @Cat)", con);
+                        ins.Parameters.AddWithValue("@Prod", idProducto);
+                        ins.Parameters.AddWithValue("@Cat", idCat);
+                        ins.ExecuteNonQuery();
+                    }
                 }
             }
 
@@ -118,30 +122,21 @@ namespace sistemaRegistro
             CargarAsignaciones();
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-            if (dgvAsignaciones.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione una fila de la tabla para eliminar la asignación.");
-                return;
-            }
+            Menu menu = new Menu();
+            this.Hide();
+            menu.ShowDialog();
+        }
 
-            int idProducto = Convert.ToInt32(dgvAsignaciones.SelectedRows[0].Cells["idProducto"].Value);
-            string categoria = dgvAsignaciones.SelectedRows[0].Cells["Categoria"].Value.ToString();
+        private void clbCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-            using (SqlConnection con = new Conexion().AbrirConexion())
-            {
-                SqlCommand cmd = new SqlCommand(@"
-                    DELETE pc 
-                    FROM tbProductoCategoria pc
-                    INNER JOIN tbCategoria c ON pc.idCategoria = c.idCategoria
-                    WHERE pc.idProducto = @Prod AND c.nombreCategoria = @Cat", con);
-                cmd.Parameters.AddWithValue("@Prod", idProducto);
-                cmd.Parameters.AddWithValue("@Cat", categoria);
-                cmd.ExecuteNonQuery();
-            }
-            MessageBox.Show("Asignación eliminada correctamente.");
-            CargarAsignaciones();
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

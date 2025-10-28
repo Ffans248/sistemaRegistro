@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
+            this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,7 +39,10 @@
             this.dgvAsignaciones = new System.Windows.Forms.DataGridView();
             this.cbProducto = new System.Windows.Forms.ComboBox();
             this.clbCategorias = new System.Windows.Forms.CheckedListBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsignaciones)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -50,14 +54,30 @@
             this.btnEliminar.IconColor = System.Drawing.Color.Black;
             this.btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEliminar.IconSize = 20;
-            this.btnEliminar.Location = new System.Drawing.Point(600, 171);
+            this.btnEliminar.Location = new System.Drawing.Point(703, 218);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(105, 55);
+            this.btnEliminar.Size = new System.Drawing.Size(106, 64);
             this.btnEliminar.TabIndex = 69;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.IconChar = FontAwesome.Sharp.IconChar.FloppyDisk;
+            this.btnEditar.IconColor = System.Drawing.Color.Black;
+            this.btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEditar.IconSize = 20;
+            this.btnEditar.Location = new System.Drawing.Point(568, 218);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(106, 64);
+            this.btnEditar.TabIndex = 68;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnGuardar
             // 
@@ -68,9 +88,9 @@
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 20;
-            this.btnGuardar.Location = new System.Drawing.Point(421, 171);
+            this.btnGuardar.Location = new System.Drawing.Point(427, 218);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(105, 55);
+            this.btnGuardar.Size = new System.Drawing.Size(106, 64);
             this.btnGuardar.TabIndex = 67;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -125,7 +145,7 @@
             // dgvAsignaciones
             // 
             this.dgvAsignaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsignaciones.Location = new System.Drawing.Point(73, 250);
+            this.dgvAsignaciones.Location = new System.Drawing.Point(73, 308);
             this.dgvAsignaciones.Name = "dgvAsignaciones";
             this.dgvAsignaciones.ReadOnly = true;
             this.dgvAsignaciones.RowHeadersWidth = 51;
@@ -144,19 +164,41 @@
             // clbCategorias
             // 
             this.clbCategorias.FormattingEnabled = true;
-            this.clbCategorias.Location = new System.Drawing.Point(137, 116);
+            this.clbCategorias.Location = new System.Drawing.Point(3, 3);
             this.clbCategorias.Name = "clbCategorias";
-            this.clbCategorias.Size = new System.Drawing.Size(142, 89);
+            this.clbCategorias.Size = new System.Drawing.Size(262, 174);
             this.clbCategorias.TabIndex = 71;
+            this.clbCategorias.SelectedIndexChanged += new System.EventHandler(this.clbCategorias_SelectedIndexChanged);
+            // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(724, 17);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(85, 40);
+            this.btnRegresar.TabIndex = 72;
+            this.btnRegresar.Text = "Menú";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.clbCategorias);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(137, 105);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(271, 185);
+            this.flowLayoutPanel1.TabIndex = 73;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // productosCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 506);
-            this.Controls.Add(this.clbCategorias);
+            this.ClientSize = new System.Drawing.Size(833, 559);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.cbProducto);
             this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
@@ -168,6 +210,7 @@
             this.Text = "productosCategoria";
             this.Load += new System.EventHandler(this.productosCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsignaciones)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,6 +219,7 @@
         #endregion
 
         private FontAwesome.Sharp.IconButton btnEliminar;
+        private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
@@ -185,5 +229,7 @@
         private System.Windows.Forms.DataGridView dgvAsignaciones;
         private System.Windows.Forms.ComboBox cbProducto;
         private System.Windows.Forms.CheckedListBox clbCategorias;
+        private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

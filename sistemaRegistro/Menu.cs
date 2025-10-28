@@ -54,50 +54,111 @@ namespace sistemaRegistro
         private void Menu_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Bienvenido: " + Session.NombreUsuario;
-            validarPermisos();
+            VerificarTodosLosPermisos(idActual);
+
         }
-        private void validarPermisos()
+        private void VerificarTodosLosPermisos(int idUsuario)
         {
-            int idUsuario = Session.UsuarioID;
-            Boolean Estado = Session.Estado;
-            if (Estado == false)
+            // Lista con los nombres de formulario y los botones asociados
+            var botones = new List<(string Formulario, Button Boton)>
+    {
+        ("Gestionar Permisos", btnGestionarPermisos),
+        ("Gestionar Usuarios", btnGestionarUsuarios),
+        ("Formularios", btnFormularios),
+        ("Categorías", btnCategorias),
+        ("Productos", btnProductos),
+        ("Proveedores", btnProveedores),
+        ("Productos Categorías", btnAsignaciones),
+        ("Compras", btnCompras),
+        ("Reportes", btnReportes)
+    };
+
+            // Recorre la lista y verifica el permiso de cada uno
+            foreach (var item in botones)
             {
-                btnchangePass.Enabled = false;
-                btnGestionarPermisos.Enabled = false;
-                btnGestionarUsuarios.Enabled = false;
-
-
+                VerificarPermisoBoton(idUsuario, item.Formulario, item.Boton);
             }
+        }
+        private void VerificarPermisoBoton(int idUsuario, string nombreFormulario, Button boton)
+        {
             using (SqlConnection con = new Conexion().AbrirConexion())
             {
+                string query = @"SELECT permiso
+                         FROM tbFormulario 
+                         WHERE idUsuario = @idUsuario AND nombreFormulario = @nombreFormulario";
 
-                string checkSql = @"SELECT 1 FROM tbAccesoFormulario
-                            WHERE idUsuario = @id AND idFormulario = 1";
-                using (SqlCommand checkCmd = new SqlCommand(checkSql, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    checkCmd.Parameters.AddWithValue("@id", idUsuario);
+                    cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@nombreFormulario", nombreFormulario);
 
+                    object resultado = cmd.ExecuteScalar();
 
-                    object existe = checkCmd.ExecuteScalar();
-                    if (existe == null)
+                    if (resultado != null && resultado != DBNull.Value)
                     {
-                        btnGestionarPermisos.Enabled = false;
+                        bool tienePermiso = Convert.ToBoolean(resultado);
+                        boton.Enabled = tienePermiso;
                     }
-                    string checkSql2 = @"SELECT 1 FROM tbAccesoFormulario
-                            WHERE idUsuario = @id2 AND idFormulario = 2";
-                    using (SqlCommand checkCmd2 = new SqlCommand(checkSql2, con))
+                    else
                     {
-                        checkCmd.Parameters.AddWithValue("@id2", idUsuario);
-
-
-                        object existe2 = checkCmd.ExecuteScalar();
-                        if (existe2 == null)
-                        {
-                            btnGestionarUsuarios.Enabled = false;
-                        }
+                        boton.Enabled = false; // Si no hay registro, por seguridad se desactiva
                     }
                 }
             }
+        }
+
+
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            Proveedores proveedores = new Proveedores();
+            this.Hide();
+            proveedores.ShowDialog();
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            Categorias categorias = new Categorias();
+            this.Hide();
+            categorias.ShowDialog();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            Productos productos = new Productos();
+            this.Hide();
+            productos.ShowDialog();
+        }
+
+        private void btnAsignaciones_Click(object sender, EventArgs e)
+        {
+            productosCategorias asignaciones = new productosCategorias();
+            this.Hide();
+            asignaciones.ShowDialog();
+        }
+
+        private void btnFormularios_Click(object sender, EventArgs e)
+        {
+            Formularios forms = new Formularios();
+            this.Hide();
+            forms.ShowDialog();
+
+        }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {
+            Compras compras = new Compras();
+            this.Hide();
+            compras.ShowDialog();
+
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+             Reportes reportes = new Reportes();
+            this.Hide();
+            reportes.ShowDialog();
+
         }
     }
 }

@@ -1,1 +1,1 @@
-﻿SELECT * FROM tbAccesoFormulario;
+﻿SELECT * FROM tbFormulario;
